@@ -1,0 +1,175 @@
+.main {
+  background-color: rgb(227, 226, 226);
+  display: flex;
+  flex-direction: column;
+}
+.Logo {
+  position: relative;
+  left: 20%;
+  @media (max-width: 400px) {
+    zoom: 100%;
+    left: 5%;
+  }
+}
+.vehicle-type {
+  width: 5%;
+  border: 1px solid gray;
+}
+.vehicle-type:nth-child(1) {
+  border-right: 1px solid gray;
+  border-top-left-radius: 5px;
+}
+.vehicle-type:nth-child(3) {
+  border-right: 1px solid gray;
+  border-top-right-radius: 5px;
+}
+.path {
+  color: rgb(178, 181, 181);
+  font-size: 12px;
+}
+.mult {
+  display: flex;
+  font-size: 12px;
+  font-family: "TBCXRegular", sans-serif;
+  font-weight: 400;
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: white;
+}
+.dropdown {
+  border: 1px solid gray;
+  width: 100%;
+  height: 4vh;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ddspan {
+  position: absolute;
+  left: 1%;
+  font-size: 80%;
+  color: gray;
+}
+.arrow {
+  color: gray;
+}
+.rotated {
+  transform: rotate(180deg);
+  position: fixed;
+}
+.dropdown-menu {
+  max-height: 200px;
+  position: relative;
+  overflow-y: scroll;
+  top: 10px;
+  z-index: 2;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.manu-item {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.dropdown-item {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.empty {
+  flex-shrink: 0;
+  display: flex;
+  position: relative;
+  margin-right: 5px;
+}
+.sec-span {
+  display: flex;
+  font-size: 14px;
+  transition: all;
+}
+.divv {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.dropdown-cat {
+  border: 1px solid gray;
+  width: 100%;
+  height: 4vh;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  span {
+    color: #ccc;
+    position: relative;
+    left: 10x;
+    margin: 0%;
+    padding: 0px;
+  }
+}
+.price-div {
+  margin-top: 14px;
+  border-top: gray solid 1px;
+}
+.price {
+  color: #333333;
+  font-size: medium;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.currencies{
+
+} 
+.usd-span {
+  position: relative;
+  left: 10bh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  color: #333333;
+  font-size: 20px;
+}
+.usd{
+  width: 200%;
+  height: 40%;
+  border: gray solid 1px;
+  border-radius: 8px;
+  font-size:  13px;
+  padding: 12px;
+  outline: none;
+}
+.pointer{
+  display: flex;
+  flex-shrink: 0;
+  width: 6px;
+  height: 2px;
+  background-color: gray;
+  margin-left: 4px;
+  margin-right: 4px;
+}
