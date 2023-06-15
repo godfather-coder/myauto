@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .Logo {
   position: relative;
   left: 20%;
@@ -11,8 +12,14 @@
     left: 5%;
   }
 }
+.type-btn{
+  display: flex;
+  
+  flex-direction: row;
+}
 .vehicle-type {
-  width: 5%;
+  margin: 20px;
+  width: 100%;
   border: 1px solid gray;
 }
 .vehicle-type:nth-child(1) {
@@ -38,10 +45,11 @@
   flex-direction: column;
   width: 20%;
   background-color: white;
+  overflow: hidden;
 }
 .dropdown {
   border: 1px solid gray;
-  width: 100%;
+  width: 200px;
   height: 4vh;
   border-radius: 5px;
   display: flex;
@@ -51,6 +59,9 @@
   cursor: pointer;
 }
 .ddspan {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   position: absolute;
   left: 1%;
   font-size: 80%;
@@ -155,15 +166,7 @@
   color: #333333;
   font-size: 20px;
 }
-.usd{
-  width: 200%;
-  height: 40%;
-  border: gray solid 1px;
-  border-radius: 8px;
-  font-size:  13px;
-  padding: 12px;
-  outline: none;
-}
+
 .pointer{
   display: flex;
   flex-shrink: 0;
@@ -172,4 +175,28 @@
   background-color: gray;
   margin-left: 4px;
   margin-right: 4px;
+}
+.Minprice{
+  width: 200%;
+  height: 40%;
+  border: gray solid 1px;
+  border-radius: 8px;
+  font-size:  13px;
+  padding: 12px;
+  outline: none;
+}
+.Maxprice{
+  width: 200%;
+  height: 40%;
+  border: gray solid 1px;
+  border-radius: 8px;
+  font-size:  13px;
+  padding: 12px;
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

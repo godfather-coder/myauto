@@ -8,7 +8,7 @@ const List: React.FC = () => {
       try {
         const response = await fetch('https://api2.myauto.ge/ka/products/');
         const data = await response.json();
-        setProducts(data.data);
+        setProducts(data.data.items)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -18,6 +18,7 @@ const List: React.FC = () => {
   }, [setProducts]);
   return (
     <div>
+      <span>{products.length} განცხადება</span>
     </div>
   )
 }
