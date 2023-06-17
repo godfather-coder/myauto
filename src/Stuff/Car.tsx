@@ -6,7 +6,6 @@ interface type {
 
 const Car : React.FC<type> = ({method}) => {
   return (
-    <div>
          <button className="vehicle-type" onClick={()=>method()}>
             <svg
               width="24"
@@ -28,7 +27,6 @@ const Car : React.FC<type> = ({method}) => {
               </defs>
             </svg>
           </button>
-    </div>
   )
 }
 

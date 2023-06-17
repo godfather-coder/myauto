@@ -5,8 +5,9 @@ import "./App.scss";
 import { useState } from "react";
 
 const App: React.FC = () => {
-  
+
   const [searchdata, setseatch] = useState<searchState>();
+
   const [arg, setarg] = useState<string>('');
 
   const context = (state: searchState,url:string) => {
@@ -16,7 +17,7 @@ const App: React.FC = () => {
 
   return (
     <div className="main">
-      <div style={{ backgroundColor: "white", width: "90%" }}>
+      <div style={{ backgroundColor: "white", width: "100%" }}>
         <MyAutoLogo></MyAutoLogo>
       </div>
       <div className="mainneasteddiv">

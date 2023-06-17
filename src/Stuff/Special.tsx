@@ -11,7 +11,6 @@ const Special: React.FC<type> = ({method, }) => {
     
   }
   return (
-    <div>
         <button className="vehicle-type" onClick={()=>handel()}>
             <svg
               width="24"
@@ -33,7 +32,6 @@ const Special: React.FC<type> = ({method, }) => {
               </defs>
             </svg>
           </button>
-    </div>
   )
 }
 
