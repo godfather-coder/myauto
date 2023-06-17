@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 interface type {
   method: () => void,
 }
-const gray = "#7d7f87"
-let colors = gray
+
 const Special: React.FC<type> = ({method, }) => {
+  const [gray,setgray] = useState("#7d7f87")
   function handel (){
     method()
+    
   }
   return (
     <div>

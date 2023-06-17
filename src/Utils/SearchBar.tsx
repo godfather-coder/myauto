@@ -13,14 +13,14 @@ const type = {
   forsale: { text: "იყიდება", value: 1 },
 };
 
-interface searchState {
+export interface searchState {
   dealtype: Number;
   make: Array<Number>;
   category: Array<Number>;
   Minprice: Number;
   MaxPrice: Number;
 }
-interface manu {
+export interface manu {
   man_id: String;
   man_name: String;
   is_car: String;
@@ -36,14 +36,17 @@ interface category {
   seo_title: String;
   vehicle_types: Array<Number>;
 }
+interface SearchBar {
+  context: (state: searchState, url: string) => void;
+}
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<SearchBar> = ({ context }) => {
   const [searchvalues, setsearchvalues] = useState<searchState>({
     dealtype: 0,
     make: [],
     category: [],
     Minprice: 0,
-    MaxPrice: 0,
+    MaxPrice: 999999999999999,
   });
 
   const [manu_str, setmanustr] = useState<String[]>([]);
@@ -86,10 +89,7 @@ const SearchBar: React.FC = () => {
       const response = await fetch("https://api2.myauto.ge/ka/cats/get");
       const jsonData = await response.json();
       setallcat(jsonData.data);
-    
       setcategoryindex(false);
-
-      console.log(category);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -97,14 +97,23 @@ const SearchBar: React.FC = () => {
 
   const [index, setindex] = useState(false);
 
+  const [url, seturl] = useState<string>("");
+
   const handleDivClick: MouseEventHandler<HTMLDivElement> = () => {
     setindex(!index);
+    if(!index){
+      setmanustr([])
+      setsearchvalues((prevState) => ({
+        ...prevState,
+        make: [],
+      }));
+     
+    } 
   };
 
   const [categoryindex, setcategoryindex] = useState(false);
 
   const handleDealTypeChange = (newValue: String) => {
-    console.log(newValue);
     if (newValue === "1") {
       setsearchvalues((prevState) => ({
         ...prevState,
@@ -154,6 +163,7 @@ const SearchBar: React.FC = () => {
       }));
       setcatstr(cat_str.filter((item) => item !== e.title));
     }
+    
   };
 
   const handelminprice = (e: Number) => {
@@ -161,7 +171,7 @@ const SearchBar: React.FC = () => {
       ...prev,
       Minprice: e,
     }));
-    console.log(searchvalues.Minprice);
+   
   };
 
   const handelmaxprice = (e: Number) => {
@@ -169,14 +179,17 @@ const SearchBar: React.FC = () => {
       ...prev,
       MaxPrice: e,
     }));
-    console.log(searchvalues.MaxPrice);
+   
+    console.log(url)
   };
-
+  
   const handelsubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(searchvalues);
+    const man = searchvalues.make.join('-')
+    const netaimushaos = `https://api2.myauto.ge/ka/products?Mans=${man}&PriceFrom=${searchvalues.Minprice}&PriceTo=${searchvalues.MaxPrice}`
+    seturl(netaimushaos);
+    context(searchvalues, netaimushaos);
   };
-
 
   const fetchcarcat = () => {
     setcategory(allcat.filter((item) => item.category_type === 0));
@@ -187,7 +200,7 @@ const SearchBar: React.FC = () => {
     setcategory(allcat.filter((item) => item.category_type === 2));
     setcategoryindex(false);
   };
-  
+
   const fetchspecialcat = () => {
     setcategory(allcat.filter((item) => item.category_type === 1));
     setcategoryindex(false);
@@ -247,7 +260,7 @@ const SearchBar: React.FC = () => {
                     type="checkbox"
                     className="empty"
                     value={item.man_id}
-                    onChange={() => handelMan(item)}
+                    onChange={() => {handelMan(item)}}
                   ></input>
                   <div className="divv">
                     <span className="empty"></span>

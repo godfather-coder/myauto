@@ -1,15 +1,27 @@
-import List from "./List";
-import MyAutoLogo from "./Utils/MyAutoLogo";
-import SearchBar from "./Utils/SearchBar";
+import List from "./Utils/List";
+import MyAutoLogo from "./Stuff/MyAutoLogo";
+import SearchBar, { searchState } from "./Utils/SearchBar";
 import "./App.scss";
+import { useState } from "react";
+
 const App: React.FC = () => {
+  
+  const [searchdata, setseatch] = useState<searchState>();
+  const [arg, setarg] = useState<string>('');
+
+  const context = (state: searchState,url:string) => {
+    setseatch(state);
+    setarg(url);
+  };
+
   return (
     <div className="main">
       <div style={{ backgroundColor: "white", width: "90%" }}>
         <MyAutoLogo></MyAutoLogo>
       </div>
       <div className="mainneasteddiv">
-        <SearchBar></SearchBar> <List />
+        <SearchBar context={context}></SearchBar>
+        <List searchstate={searchdata} str={arg} />
       </div>
     </div>
   );
